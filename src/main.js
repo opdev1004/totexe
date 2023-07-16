@@ -6,6 +6,7 @@ try
 
     var tots = {};
     var port = 3000;
+    var timer;
 
     const server = net.createServer((socket) =>
     {
@@ -87,6 +88,8 @@ try
             {
                 process.exit(0);
             }
+
+            refreshTimer();
         });
 
         socket.on('end', () =>
@@ -106,9 +109,24 @@ try
             If this is running without other application, you can just close it manually.
         `);
     });
+
+    timer = setTimeout(() =>
+    {
+        process.exit(0);
+    }, 5 * 60 * 1000);
 }
 catch (error)
 {
     console.error(error);
     socket.write(error.toString());
+}
+
+function refreshTimer()
+{
+    clearTimeout(timer);
+
+    timer = setTimeout(() =>
+    {
+        process.exit(0);
+    }, 5 * 60 * 1000);
 }
