@@ -14,77 +14,77 @@ try
         {
             var dataObject = JSON.parse(data.toString());
 
-            if (dataObject.type == 'init-tot')
+            if (dataObject.message == 'init-tot')
             {
                 tots[dataObject.totname] = new Tot(dataObject.filename);
                 socket.write(true);
             }
-            else if (dataObject.type == 'open')
+            else if (dataObject.message == 'open')
             {
                 await tots[dataObject.totname].open(dataObject.filename);
                 socket.write(true);
             }
-            else if (dataObject.type == 'close')
+            else if (dataObject.message == 'close')
             {
                 await tots[dataObject.totname].open(dataObject.filename);
                 socket.write(true);
             }
-            else if (dataObject.type == 'get-data-by-name')
+            else if (dataObject.message == 'get-data-by-name')
             {
                 const response = await tots[dataObject.totname].getDataByNameAt(dataObject.name)
                 socket.write(response);
             }
-            else if (dataObject.type == 'get-data-by-name-at')
+            else if (dataObject.message == 'get-data-by-name-at')
             {
                 const response = await tots[dataObject.totname].getDataByNameAt(dataObject.name, dataObject.position)
                 socket.write(response);
             }
-            else if (dataObject.type == 'push')
+            else if (dataObject.message == 'push')
             {
                 const response = await tots[dataObject.totname].push(dataObject.name, dataObject.data)
                 socket.write(response);
             }
-            else if (dataObject.type == 'update')
+            else if (dataObject.message == 'update')
             {
                 const response = await tots[dataObject.totname].update(dataObject.name, dataObject.data)
                 socket.write(response);
             }
-            else if (dataObject.type == 'hard-update')
+            else if (dataObject.message == 'hard-update')
             {
                 const response = await tots[dataObject.totname].update(dataObject.name, dataObject.data)
                 socket.write(response);
             }
-            else if (dataObject.type == 'remove')
+            else if (dataObject.message == 'remove')
             {
                 const response = await tots[dataObject.totname].remove(dataObject.name)
                 socket.write(response);
             }
-            else if (dataObject.type == 'hard-remove')
+            else if (dataObject.message == 'hard-remove')
             {
                 const response = await tots[dataObject.totname].hardRemove(dataObject.name)
                 socket.write(response);
             }
-            else if (dataObject.type == 'clean')
+            else if (dataObject.message == 'clean')
             {
                 const response = await tots[dataObject.totname].clean()
                 socket.write(response);
             }
-            else if (dataObject.type == 'is-open-tag-exists')
+            else if (dataObject.message == 'is-open-tag-exists')
             {
                 const response = await tots[dataObject.totname].isOpenTagExists(dataObject.name)
                 socket.write(response);
             }
-            else if (dataObject.type == 'is-close-tag-exists')
+            else if (dataObject.message == 'is-close-tag-exists')
             {
                 const response = await tots[dataObject.totname].isCloseTagExists(dataObject.name)
                 socket.write(response);
             }
-            else if (dataObject.type == 'write')
+            else if (dataObject.message == 'write')
             {
                 await tots[dataObject.totname].create()
                 socket.write(true);
             }
-            else if (dataObject.type == 'exit')
+            else if (dataObject.message == 'exit')
             {
                 process.exit(0);
             }
