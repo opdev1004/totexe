@@ -1,0 +1,25 @@
+{
+  "name": "totexe",
+  "version": "0.0.1",
+  "description": "Executable for .tot file handler",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "pkg src/main.js --targets node16-win --output tot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opdev1004/totexe.git"
+  },
+  "keywords": [
+    "tot"
+  ],
+  "author": "Victor Chanil Park",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opdev1004/totexe/issues"
+  },
+  "homepage": "https://github.com/opdev1004/totexe#readme",
+  "dependencies": {
+    "totjs": "^0.0.5"
+  }
+}
